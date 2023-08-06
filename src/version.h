@@ -91,18 +91,18 @@ const char *GetVersionString();
 #define SAVEVER 4559
 
 // This is so that derivates can use the same savegame versions without worrying about engine compatibility
-#define GAMESIG "GZDOOM"
+#define GAMESIG "DIVINEFREQUENCY"
 #define BASEWAD "gzdoom.pk3"
 #define OPTIONALWAD "game_support.pk3"
 #define GZDOOM 1
 #define VR3D_ENABLED
 
 // More stuff that needs to be different for derivatives.
-#define GAMENAME "GZDoom"
-#define WGAMENAME L"GZDoom"
-#define GAMENAMELOWERCASE "gzdoom"
-#define FORUM_URL "http://forum.zdoom.org/"
-#define BUGS_FORUM_URL	"http://forum.zdoom.org/viewforum.php?f=2"
+#define GAMENAME "DivineFrequency"
+#define WGAMENAME L"DivineFrequency"
+#define GAMENAMELOWERCASE "divinefrequency"
+#define FORUM_URL "https://twitter.com/GenghisKhan1109"
+#define BUGS_FORUM_URL	"https://discord.gg/jnyFVSTgf3"
 
 #if defined(__APPLE__) || defined(_WIN32)
 #define GAME_DIR GAMENAME
