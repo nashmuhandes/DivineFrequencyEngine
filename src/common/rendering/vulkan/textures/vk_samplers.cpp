@@ -128,32 +128,6 @@ void VkSamplerManager::CreateHWSamplers()
 			.Create(fb->device);
 	}
 
-	SamplerBuilder builderClampNoneForceFilter;
-	builderClampNoneForceFilter.MagFilter(TexFilter[4].magFilter);
-	builderClampNoneForceFilter.MinFilter(TexFilter[4].minFilter);
-	builderClampNoneForceFilter.AddressMode(TexClamp[CLAMP_NONE_TRILINEAR_FILTER].clamp_u, TexClamp[CLAMP_NONE_TRILINEAR_FILTER].clamp_v, VK_SAMPLER_ADDRESS_MODE_REPEAT);
-	builderClampNoneForceFilter.MipmapMode(TexFilter[4].mipfilter);
-	if (TexFilter[4].mipmapping)
-	{
-		builderClampNoneForceFilter.Anisotropy(gl_texture_filter_anisotropic);
-		builderClampNoneForceFilter.MaxLod(100.0f);
-	}
-	else
-	{
-		builderClampNoneForceFilter.MaxLod(0.25f);
-	}
-	builderClampNoneForceFilter.DebugName("VkSamplerManager.mSamplers");
-	mSamplers[CLAMP_NONE_TRILINEAR_FILTER] = builderClampNoneForceFilter.Create(fb->device);
-
-	mSamplers[CLAMP_XY_NOMIP_TRILINEAR_FILTER] = SamplerBuilder()
-		.MagFilter(TexFilter[4].magFilter)
-		.MinFilter(TexFilter[4].magFilter)
-		.AddressMode(VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE, VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE, VK_SAMPLER_ADDRESS_MODE_REPEAT)
-		.MipmapMode(VK_SAMPLER_MIPMAP_MODE_NEAREST)
-		.MaxLod(0.25f)
-		.DebugName("VkSamplerManager.mSamplers")
-		.Create(fb->device);
-
 	// CAMTEX is repeating with texture filter and no mipmap
 	mSamplers[CLAMP_CAMTEX] = SamplerBuilder()
 		.MagFilter(TexFilter[filter].magFilter)
