@@ -137,6 +137,26 @@ void VkSamplerManager::CreateHWSamplers()
 		.MaxLod(0.25f)
 		.DebugName("VkSamplerManager.mSamplers")
 		.Create(fb->device);
+
+	mSamplers[CLAMP_NONE_FORCEFILTER] = SamplerBuilder()
+		.MagFilter(TexFilter[4].magFilter)
+		.MinFilter(TexFilter[4].minFilter)
+		.AddressMode(VK_SAMPLER_ADDRESS_MODE_REPEAT, VK_SAMPLER_ADDRESS_MODE_REPEAT, VK_SAMPLER_ADDRESS_MODE_REPEAT)
+		.MipmapMode(TexFilter[4].mipfilter)
+		.Anisotropy(gl_texture_filter_anisotropic)
+		.MaxLod(100.0f)
+		.DebugName("VkSamplerManager.mSamplers")
+		.Create(fb->device);
+
+	mSamplers[CLAMP_XY_FORCEFILTER] = SamplerBuilder()
+		.MagFilter(TexFilter[4].magFilter)
+		.MinFilter(TexFilter[4].minFilter)
+		.AddressMode(VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE, VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE, VK_SAMPLER_ADDRESS_MODE_REPEAT)
+		.MipmapMode(TexFilter[4].mipfilter)
+		.Anisotropy(gl_texture_filter_anisotropic)
+		.MaxLod(100.0f)
+		.DebugName("VkSamplerManager.mSamplers")
+		.Create(fb->device);
 }
 
 void VkSamplerManager::DeleteHWSamplers()
